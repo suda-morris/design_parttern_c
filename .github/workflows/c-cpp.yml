@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        demos: [iterator, template_method]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: build demos
+        run: |
+          cd ${{ matrix.demos }}
+          mkdir build
+          cd build
+          cmake ../
+          cmake --build .
+      - name: upload
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ matrix.demos }}-artifact
+          path: ${{ matrix.demos }}/build
