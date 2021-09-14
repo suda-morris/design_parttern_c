@@ -1,0 +1,936 @@
+<!DOCTYPE html><html lang="C"><head><title>OOP in C &amp; Driver-NG</title><meta property="og:title" content="OOP in C &amp; Driver-NG"><meta name="description" content="Introduction of Object Oriented Programming in C language"><meta property="og:description" content="Introduction of Object Oriented Programming in C language"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template-areas:"current next" "current note" "info    note";grid-template-columns:2fr 1fr;grid-template-rows:minmax(140px,1fr) 2fr 3em;height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:1.1em;height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{display:block;height:auto;width:100%}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{position:static}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{content:""}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{position:relative}}div#p>svg>foreignObject>section [data-marp-fitting-svg-content]{display:table;white-space:nowrap;width:-webkit-max-content;width:-moz-max-content;width:max-content}div#p>svg>foreignObject>section [data-marp-fitting-svg-content-wrap]{white-space:pre}div#p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+/*!
+ * Marp / Marpit Uncover theme
+ *
+ * @theme uncover
+ * @author Yuki Hattori
+ *
+ * @auto-scaling fittingHeader,math
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#p>svg>foreignObject>section{word-wrap:break-word;--color-background:#fdfcff;--color-background-code:#f2f1f4;--color-background-paginate:rgba(32,34,40,0.05);--color-foreground:#202228;--color-highlight:#009dd5;--color-highlight-hover:#087eaa;--color-highlight-heading:#33b1dd;--color-header:rgba(32,34,40,0.4);--color-header-shadow:rgba(253,252,255,0.8);background:var(--color-background);flex-direction:column;flex-wrap:nowrap;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;font-size:40px;height:720px;justify-content:center;letter-spacing:3px;line-height:1.4;padding:30px 70px;position:relative;text-align:center;width:1280px;z-index:0}div#p>svg>foreignObject>section{--marpit-root-font-size:40px}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section:after{color:var(--color-foreground);display:flex}div#p>svg>foreignObject>section:after{align-items:flex-end;background:linear-gradient(-45deg,var(--color-background-paginate) 50%,transparent 50%);background-size:cover;font-size:.6em;height:80px;justify-content:flex-end;padding:30px;text-align:right;text-shadow:0 0 5px var(--color-background);width:80px}div#p>svg>foreignObject>section:after{--marpit-root-font-size:.6em}div#p>svg>foreignObject>section:not(.invert) .hljs{background:#fff;display:block;overflow-x:auto;padding:.5em}div#p>svg>foreignObject>section:not(.invert) .hljs,div#p>svg>foreignObject>section:not(.invert) .hljs-subst{color:#000}div#p>svg>foreignObject>section:not(.invert) .hljs-addition,div#p>svg>foreignObject>section:not(.invert) .hljs-meta,div#p>svg>foreignObject>section:not(.invert) .hljs-string,div#p>svg>foreignObject>section:not(.invert) .hljs-symbol,div#p>svg>foreignObject>section:not(.invert) .hljs-template-tag,div#p>svg>foreignObject>section:not(.invert) .hljs-template-variable{color:#756bb1}div#p>svg>foreignObject>section:not(.invert) .hljs-comment,div#p>svg>foreignObject>section:not(.invert) .hljs-quote{color:#636363}div#p>svg>foreignObject>section:not(.invert) .hljs-bullet,div#p>svg>foreignObject>section:not(.invert) .hljs-link,div#p>svg>foreignObject>section:not(.invert) .hljs-literal,div#p>svg>foreignObject>section:not(.invert) .hljs-number,div#p>svg>foreignObject>section:not(.invert) .hljs-regexp{color:#31a354}div#p>svg>foreignObject>section:not(.invert) .hljs-deletion,div#p>svg>foreignObject>section:not(.invert) .hljs-variable{color:#88f}div#p>svg>foreignObject>section:not(.invert) .hljs-built_in,div#p>svg>foreignObject>section:not(.invert) .hljs-doctag,div#p>svg>foreignObject>section:not(.invert) .hljs-keyword,div#p>svg>foreignObject>section:not(.invert) .hljs-name,div#p>svg>foreignObject>section:not(.invert) .hljs-section,div#p>svg>foreignObject>section:not(.invert) .hljs-selector-class,div#p>svg>foreignObject>section:not(.invert) .hljs-selector-id,div#p>svg>foreignObject>section:not(.invert) .hljs-selector-tag,div#p>svg>foreignObject>section:not(.invert) .hljs-strong,div#p>svg>foreignObject>section:not(.invert) .hljs-tag,div#p>svg>foreignObject>section:not(.invert) .hljs-title,div#p>svg>foreignObject>section:not(.invert) .hljs-type{color:#3182bd}div#p>svg>foreignObject>section:not(.invert) .hljs-emphasis{font-style:italic}div#p>svg>foreignObject>section:not(.invert) .hljs-attribute{color:#e6550d}div#p>svg>foreignObject>section.invert{--color-background:#202228;--color-background-code:#2b2d33;--color-background-paginate:hsla(0,0%,100%,0.05);--color-foreground:#fff;--color-highlight:#60d0f0;--color-highlight-hover:#88dcf4;--color-highlight-heading:#80d9f3;--color-header:hsla(0,0%,100%,0.4);--color-header-shadow:rgba(32,34,40,0.8)}div#p>svg>foreignObject>section.invert .hljs{background:#222;color:#fff;display:block;overflow-x:auto;padding:.5em}div#p>svg>foreignObject>section.invert .hljs-comment,div#p>svg>foreignObject>section.invert .hljs-quote{color:#777}div#p>svg>foreignObject>section.invert .hljs-built_in,div#p>svg>foreignObject>section.invert .hljs-builtin-name,div#p>svg>foreignObject>section.invert .hljs-bullet,div#p>svg>foreignObject>section.invert .hljs-deletion,div#p>svg>foreignObject>section.invert .hljs-link,div#p>svg>foreignObject>section.invert .hljs-literal,div#p>svg>foreignObject>section.invert .hljs-meta,div#p>svg>foreignObject>section.invert .hljs-number,div#p>svg>foreignObject>section.invert .hljs-params,div#p>svg>foreignObject>section.invert .hljs-regexp,div#p>svg>foreignObject>section.invert .hljs-symbol,div#p>svg>foreignObject>section.invert .hljs-tag,div#p>svg>foreignObject>section.invert .hljs-template-variable,div#p>svg>foreignObject>section.invert .hljs-variable{color:#ab875d}div#p>svg>foreignObject>section.invert .hljs-attribute,div#p>svg>foreignObject>section.invert .hljs-name,div#p>svg>foreignObject>section.invert .hljs-section,div#p>svg>foreignObject>section.invert .hljs-selector-class,div#p>svg>foreignObject>section.invert .hljs-selector-id,div#p>svg>foreignObject>section.invert .hljs-title,div#p>svg>foreignObject>section.invert .hljs-type{color:#9b869b}div#p>svg>foreignObject>section.invert .hljs-addition,div#p>svg>foreignObject>section.invert .hljs-keyword,div#p>svg>foreignObject>section.invert .hljs-selector-tag,div#p>svg>foreignObject>section.invert .hljs-string{color:#8f9c6c}div#p>svg>foreignObject>section.invert .hljs-emphasis{font-style:italic}div#p>svg>foreignObject>section.invert .hljs-strong{font-weight:700}div#p>svg>foreignObject>section>:first-child,div#p>svg>foreignObject>section[data-header]>:nth-child(2){margin-top:0}div#p>svg>foreignObject>section>:last-child,div#p>svg>foreignObject>section[data-footer]>:nth-last-child(2){margin-bottom:0}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{--preserve-aspect-ratio:xMidYMid meet;max-height:660px}div#p>svg>foreignObject>section blockquote,div#p>svg>foreignObject>section p{margin:0 0 15px}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{margin:15px 0 30px}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{color:var(--color-highlight-heading);font-weight:inherit}div#p>svg>foreignObject>section h1{font-size:2em}div#p>svg>foreignObject>section h2{font-size:1.7em}div#p>svg>foreignObject>section h3{font-size:1.4em;letter-spacing:2px}div#p>svg>foreignObject>section h4{font-size:1.2em;letter-spacing:2px}div#p>svg>foreignObject>section h5{font-size:1em;letter-spacing:1px}div#p>svg>foreignObject>section h6{font-size:.8em;letter-spacing:1px}div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header{color:var(--color-header);font-size:.45em;left:70px;letter-spacing:1px;position:absolute;right:70px;text-shadow:0 1px 0 var(--color-header-shadow);z-index:1}div#p>svg>foreignObject>section header{top:30px}div#p>svg>foreignObject>section footer{bottom:30px}div#p>svg>foreignObject>section a{color:var(--color-highlight);text-decoration:none}div#p>svg>foreignObject>section a:hover{color:var(--color-highlight-hover);text-decoration:underline}div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section ul{margin:0 auto;text-align:left}div#p>svg>foreignObject>section>ol,div#p>svg>foreignObject>section>ul{margin-bottom:15px}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section pre{background:var(--color-background-code);color:var(--color-foreground);font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;letter-spacing:0;margin:-.2em .2em .2em;padding:.2em}div#p>svg>foreignObject>section pre{box-shadow:0 4px 8px rgba(0,0,0,.2);font-size:70%;line-height:1.15;margin:15px auto 30px;min-width:40%;padding:.4em .6em;text-align:left}div#p>svg>foreignObject>section pre>code{margin:0;padding:0}div#p>svg>foreignObject>section table{border-collapse:collapse;margin:0 auto 15px}div#p>svg>foreignObject>section table>tbody>tr>td,div#p>svg>foreignObject>section table>tbody>tr>th,div#p>svg>foreignObject>section table>thead>tr>td,div#p>svg>foreignObject>section table>thead>tr>th{padding:.15em .5em}div#p>svg>foreignObject>section table>thead>tr>td,div#p>svg>foreignObject>section table>thead>tr>th{border-bottom:3px solid}div#p>svg>foreignObject>section table>tbody>tr:not(:last-child)>td,div#p>svg>foreignObject>section table>tbody>tr:not(:last-child)>th{border-bottom:1px solid}div#p>svg>foreignObject>section blockquote{font-size:90%;line-height:1.3;padding:0 2em;position:relative;z-index:0}div#p>svg>foreignObject>section blockquote:after,div#p>svg>foreignObject>section blockquote:before{content:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNDQgMTkuMyAzOC45NCAwQzguMTQgOS41OSAwIDQwLjA1IDAgNTQuODNWMTAwaDQxLjQ3VjU0LjgzaC0yM2MtLjA0LS4yOC4yNS0yNy42NiAyNS41My0zNS41M3ptNTYgMEw5NC45NCAwQzY0LjE0IDkuNTkgNTYgNDAuMDUgNTYgNTQuODNWMTAwaDQxLjQ3VjU0LjgzaC0yM2MtLjA0LS4yOC4yNS0yNy42NiAyNS41My0zNS41M3oiIHN0eWxlPSJmaWxsOiM4ODg7b3BhY2l0eTouMzMiLz48L3N2Zz4=");height:auto;pointer-events:none;position:absolute;width:1em;z-index:-1}div#p>svg>foreignObject>section blockquote:before{left:0;top:0}div#p>svg>foreignObject>section blockquote:after{bottom:0;right:0;transform:rotate(180deg)}div#p>svg>foreignObject>section blockquote>:last-child{margin-bottom:0}div#p>svg>foreignObject>section mark{background:transparent;color:var(--color-highlight)}div#p>svg>foreignObject>section[data-marpit-scope-GYvWL357] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-EWD32V8l] code{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-j7h0XrkE] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-j7h0XrkE] code{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-IGGmPO4H] code{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-IGGmPO4H] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-hU2tHP5w] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-hU2tHP5w] code{font-size:70%}div#p>svg>foreignObject>section[data-marpit-scope-uq7JVhzu] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-uq7JVhzu] code{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-fGubuibj] code{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-E2DcZdOt] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-tGJ4ybIt] code{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-tGJ4ybIt] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-6gbM4ZT2] code{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-6gbM4ZT2] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-N8ZG82Kc] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-ZdsSHGTy] li{font-size:95%}div#p>svg>foreignObject>section[data-marpit-scope-8jniDQCH] code{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-8jniDQCH] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-bPzqXuj7] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-TIba2vXG] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-k2eWpeoD] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-ghqRtJBP] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-aSLJ5l81] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-mKASLXs8] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-0EHcaxG9] li{font-size:88%}div#p>svg>foreignObject>section[data-marpit-scope-2gmmXILE] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-4oLP0Wnp] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-DHztuv22] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-HSavI5q4] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-mU57faf2] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-OODJqvnQ] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-WU7owmPy] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-dWzajzmr] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-oZ2AH4Zd] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-DHTaQ7Mj] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-scsDzwBb] blockquote{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-ZmPIGb17] li{font-size:60%}div#p>svg>foreignObject>section[data-marpit-scope-6BVH5EU0] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-JJtmk3QZ] li{font-size:70%}div#p>svg>foreignObject>section[data-marpit-scope-tIYMaj21] li{font-size:85%}div#p>svg>foreignObject>section[data-marpit-scope-qAt7owMl] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-BL7uWSYZ] li{font-size:90%}div#p>svg>foreignObject>section[data-marpit-scope-iFZs2sZs] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-HRiW6690] li{font-size:70%}div#p>svg>foreignObject>section[data-marpit-scope-goZo9gM3] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-scope-GyHVU7U4] li{font-size:80%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-footer="**💕 𝙸𝙳𝙵 Chip Support Team 💕**" data-theme="uncover" style="--footer:**💕 𝙸𝙳𝙵 Chip Support Team 💕**;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/background.svg&quot;);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="1" data-footer="**💕 𝙸𝙳𝙵 Chip Support Team 💕**" data-theme="uncover" style="--footer:**💕 𝙸𝙳𝙵 Chip Support Team 💕**;--theme:uncover;" data-marpit-advanced-background="content">
+<p><img src="assets/logo.svg" alt="w:500 h:100" style="width:500px;height:100px;" /></p>
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> OOP in C &amp; Driver-NG</span></foreignObject></svg></h1>
+<h2><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> How to Write Object Oriented Code in C</span></foreignObject></svg></h2>
+<footer><strong><img class="emoji" draggable="false" alt="💕" src="https://twemoji.maxcdn.com/2/svg/1f495.svg" data-marp-twemoji=""/> 𝙸𝙳𝙵 Chip Support Team <img class="emoji" draggable="false" alt="💕" src="https://twemoji.maxcdn.com/2/svg/1f495.svg" data-marp-twemoji=""/></strong></footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-class="invert" data-theme="uncover" class="invert" style="--class:invert;--theme:uncover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/qr-code.svg&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="2" data-class="invert" data-theme="uncover" class="invert" style="--class:invert;--theme:uncover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<h1><strong>Overview</strong> <img class="emoji" draggable="false" alt="📖" src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" data-marp-twemoji=""/></h1>
+<ul>
+<li>Primitives for OOP in C</li>
+<li>Design Pattern - Iterator</li>
+<li>Think in Driver-NG</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-background-image="linear-gradient(to bottom, #8e0038, #fd558f)" data-color="white" data-theme="uncover" style="--background-image:linear-gradient(to bottom, #8e0038, #fd558f);--color:white;--theme:uncover;color:white;background-image:linear-gradient(to bottom, #8e0038, #fd558f);background-position:center;background-repeat:no-repeat;background-size:cover;">
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Get Started with Git <img class="emoji" draggable="false" alt="🐾" src="https://twemoji.maxcdn.com/2/svg/1f43e.svg" data-marp-twemoji=""/></span></foreignObject></svg></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Git**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="4" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/git.svg&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="4" data-paginate="true" data-header="**Git**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="4" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Git</strong></header>
+
+<blockquote>
+<p><a href="https://git-scm.com/">Git</a> is a free and open source <strong>distributed</strong> version control system with <em>speed</em> and <em>efficiency</em></p>
+</blockquote>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="4" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-GYvWL357="" data-paginate="true" data-header="**Remote Repository 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="5" data-marpit-pagination-total="71" style="--paginate:true;--header:**Remote Repository 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/github.svg&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/gitlab.svg&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="5" data-marpit-scope-GYvWL357="" data-paginate="true" data-header="**Remote Repository 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="5" data-marpit-pagination-total="71" style="--paginate:true;--header:**Remote Repository 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Remote Repository <img class="emoji" draggable="false" alt="🖥️" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/></strong></header>
+
+<h1><a href="https://github.com/espressif/esp-idf">GitHub</a> <img class="emoji" draggable="false" alt="🆚" src="https://twemoji.maxcdn.com/2/svg/1f19a.svg" data-marp-twemoji=""/> <a href="https://gitlab.espressif.cn:6688/espressif/esp-idf">GitLab</a></h1>
+<ul>
+<li>Web-based Git repository</li>
+<li>GitLab: <strong>Internal</strong> develop, <strong><a href="https://gitlab.espressif.cn:6688/help/ci/examples/README.md">CI/CD</a></strong></li>
+<li>GitHub: <strong>Community</strong> feedback, <strong><a href="https://help.github.com/en/actions">Action</a></strong></li>
+<li>Issue tracking</li>
+<li>Code review</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="5" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Installation 🚀**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="6" data-marpit-pagination-total="71" style="--paginate:true;--header:**Installation 🚀**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="vertical"><figure style="background-image:url(&quot;https://fakeimg.pl/800x600/00c853/fff/?text=Linux&quot;);"></figure><figure style="background-image:url(&quot;https://fakeimg.pl/800x600/448aff/fff/?text=Mac&quot;);"></figure><figure style="background-image:url(&quot;https://fakeimg.pl/800x600/ffd600/fff/?text=Windows&quot;);"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="6" data-paginate="true" data-header="**Installation 🚀**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="6" data-marpit-pagination-total="71" style="--paginate:true;--header:**Installation 🚀**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Installation <img class="emoji" draggable="false" alt="🚀" src="https://twemoji.maxcdn.com/2/svg/1f680.svg" data-marp-twemoji=""/></strong></header>
+<pre><code class="language-bash"><span class="hljs-comment"># Debian-based distribution</span>
+sudo apt install git
+
+<span class="hljs-comment"># Fedora</span>
+sudo yum install git
+
+<span class="hljs-comment"># Arch</span>
+sudo pacman -S git
+</code></pre>
+<pre><code class="language-bash"><span class="hljs-comment"># MacPorts</span>
+sudo port install git
+
+<span class="hljs-comment"># Homebrew</span>
+brew install git
+</code></pre>
+<p><a href="https://gitforwindows.org/">Download installer for Windows</a></p>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="6" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="**Set up SSH for Git 🔐**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="7" data-marpit-pagination-total="71" style="--paginate:true;--header:**Set up SSH for Git 🔐**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Set up SSH for Git <img class="emoji" draggable="false" alt="🔐" src="https://twemoji.maxcdn.com/2/svg/1f510.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li><code>ls -la ~/.ssh</code> to see if you already have a public SSH key (e.g. <em>id_rsa.pub</em>)</li>
+<li>If not, create a new public and private key pair with command <strong>ssh-keygen</strong></li>
+<li>Add your private key to <em>ssh-agent</em> with command <strong>ssh-add ~/.ssh/id_rsa</strong></li>
+<li>Copy the contents of <strong>id_rsa.pub</strong> file to GitHub/GitLab/Bitbucket...</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-EWD32V8l="" data-paginate="true" data-header="**Git Manual 👨‍🏫**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="8" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git Manual 👨‍🏫**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="vertical"><figure style="background-image:url(&quot;https://fakeimg.pl/800x600/F48FB1/fff/?text=tldr&quot;);"></figure><figure style="background-image:url(&quot;https://fakeimg.pl/800x600/0288d1/fff/?text=man&quot;);"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="8" data-marpit-scope-EWD32V8l="" data-paginate="true" data-header="**Git Manual 👨‍🏫**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="8" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git Manual 👨‍🏫**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Git Manual <img class="emoji" draggable="false" alt="👨‍🏫" src="https://twemoji.maxcdn.com/2/svg/1f468-200d-1f3eb.svg" data-marp-twemoji=""/></strong></header>
+<pre><code class="language-bash"><span class="hljs-comment"># get common usage on &#x27;git diff&#x27;</span>
+tldr git-diff
+</code></pre>
+<pre><code class="language-bash"><span class="hljs-comment"># get all available information on &#x27;git status&#x27;</span>
+git status --<span class="hljs-built_in">help</span> <span class="hljs-comment"># same as &#x27;man git-status&#x27;</span>
+<span class="hljs-comment"># get a quick help on &#x27;git checkout&#x27;</span>
+git checkout -h
+</code></pre>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="8" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="**Create a repository ☕**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="9" data-marpit-pagination-total="71" style="--paginate:true;--header:**Create a repository ☕**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Create a repository <img class="emoji" draggable="false" alt="☕" src="https://twemoji.maxcdn.com/2/svg/2615.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Navigate to the directory you want to place under version control</li>
+<li>Create an empty Git repository: <code>git init</code>, this creates a hidden folder <strong>.git</strong>, which contains the entire history and configuration for the project</li>
+</ul>
+<pre><code class="language-bash">mkdir oh_my_project &amp;&amp; <span class="hljs-built_in">cd</span> oh_my_project
+git init
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="**Setting username and email 📭**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="10" data-marpit-pagination-total="71" style="--paginate:true;--header:**Setting username and email 📭**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Setting username and email <img class="emoji" draggable="false" alt="📭" src="https://twemoji.maxcdn.com/2/svg/1f4ed.svg" data-marp-twemoji=""/></strong></header>
+<pre><code class="language-bash"><span class="hljs-built_in">cd</span> /path/to/my/repo
+git config user.name <span class="hljs-string">&quot;Your name&quot;</span>
+git config user.email <span class="hljs-string">&quot;xxx@espressif.com&quot;</span>
+</code></pre>
+<ul>
+<li>
+<p>It will store the setting inside the individual repository: <code>/path/to/your/repo/.git/config</code></p>
+</li>
+<li>
+<p>Advanced practice <img class="emoji" draggable="false" alt="💯" src="https://twemoji.maxcdn.com/2/svg/1f4af.svg" data-marp-twemoji=""/>: Force Git to look for your identity only within a repository's settings</p>
+<pre><code class="language-bash">git config --global user.useConfigOnly <span class="hljs-literal">true</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-scope-j7h0XrkE="" data-paginate="true" data-header="**Add 🥪**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="11" data-marpit-pagination-total="71" style="--paginate:true;--header:**Add 🥪**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Add <img class="emoji" draggable="false" alt="🥪" src="https://twemoji.maxcdn.com/2/svg/1f96a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>
+<p>Check what files Git will add to your repository with command <code>git status</code></p>
+</li>
+<li>
+<p>Review the resulting list of files, tell Git which of the files to place into version control (avoid adding files with confidential information)</p>
+<pre><code class="language-bash">git status
+git add &lt;file/directory name <span class="hljs-comment">#1&gt; &lt;file/directory name #2&gt; &lt;...&gt;</span>
+</code></pre>
+</li>
+<li>
+<p>If all files in the list should be added to version control</p>
+<pre><code class="language-bash">git add -A
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="**Commit 🥪**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="12" data-marpit-pagination-total="71" style="--paginate:true;--header:**Commit 🥪**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Commit <img class="emoji" draggable="false" alt="🥪" src="https://twemoji.maxcdn.com/2/svg/1f96a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>
+<p>Commit all files that have been added, along with a commit message</p>
+<pre><code class="language-bash">git commit -m <span class="hljs-string">&quot;add README.md&quot;</span>
+<span class="hljs-comment"># if you omit the -m parameter,</span>
+<span class="hljs-comment"># your default editor will open,</span>
+<span class="hljs-comment"># and you can edit and save the commit message there</span>
+</code></pre>
+</li>
+<li>
+<p>A commit is like a save or <strong>snapshot</strong> of your entire project</p>
+</li>
+<li>
+<p>You can now push it to a remote repository, and later you can jump back to it if necessary</p>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Create a repository on remote 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="13" data-marpit-pagination-total="71" style="--paginate:true;--header:**Create a repository on remote 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/create_repo1.png&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/create_repo2.png&quot;);background-size:90%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="**Create a repository on remote 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="13" data-marpit-pagination-total="71" style="--paginate:true;--header:**Create a repository on remote 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="content">
+<header><strong>Create a repository on remote <img class="emoji" draggable="false" alt="🖥️" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="13" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-scope-IGGmPO4H="" data-paginate="true" data-header="**Adding a remote 🚚**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="14" data-marpit-pagination-total="71" style="--paginate:true;--header:**Adding a remote 🚚**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Adding a remote <img class="emoji" draggable="false" alt="🚚" src="https://twemoji.maxcdn.com/2/svg/1f69a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>To add a new remote, use the <code>git remote add</code> command in your local repository</li>
+<li>The <code>git remote add</code> command takes two arguments:
+<ul>
+<li>A remote name, e.g. <strong>origin</strong></li>
+<li>A remote URL</li>
+</ul>
+<pre><code class="language-bash">git remote add origin ssh://git@gitlab.espressif.cn:27227/srmao/oh-my-project.git
+</code></pre>
+</li>
+<li>If you want to change the URL of a remote<pre><code class="language-bash">git remote set-url origin ssh://git@bitbucket.server.com:7999/username/project.git
+</code></pre>
+</li>
+<li>Show a list of existing remotes: <code>git remote -v</code></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="**Push to remote 🚚**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="15" data-marpit-pagination-total="71" style="--paginate:true;--header:**Push to remote 🚚**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Push to remote <img class="emoji" draggable="false" alt="🚚" src="https://twemoji.maxcdn.com/2/svg/1f69a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>
+<p>Copy your local repository to the remote</p>
+</li>
+<li>
+<p>Adding <code>--set-upstream</code> (or <code>-u</code>) created an upstream reference which is used by argument-less Git commands (e.g. <code>git pull</code>)</p>
+<pre><code class="language-bash">git push --set-upstream origin master
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="linear-gradient(to bottom, #0d47a1, #42a5f5)" data-color="white" data-theme="uncover" style="--background-image:linear-gradient(to bottom, #0d47a1, #42a5f5);--color:white;--theme:uncover;color:white;background-image:linear-gradient(to bottom, #0d47a1, #42a5f5);background-position:center;background-repeat:no-repeat;background-size:cover;">
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Professional in Git <img class="emoji" draggable="false" alt="🐾" src="https://twemoji.maxcdn.com/2/svg/1f43e.svg" data-marp-twemoji=""/></span></foreignObject></svg></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-marpit-scope-hU2tHP5w="" data-paginate="true" data-header="**Browsing the history 1 📜**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="17" data-marpit-pagination-total="71" style="--paginate:true;--header:**Browsing the history 1 📜**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Browsing the history 1 <img class="emoji" draggable="false" alt="📜" src="https://twemoji.maxcdn.com/2/svg/1f4dc.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>List last 10 commits logs, on a single line: <code>git log --oneline -10</code></li>
+<li>Log for a range of lines within a file: <code>git log -L 1,5:README.md</code></li>
+<li>To see the log in a prettier graph-like structure<pre><code class="language-bash">git <span class="hljs-built_in">log</span> --decorate --oneline --graph -20
+</code></pre>
+</li>
+<li>Colorize logs<pre><code class="language-bash">git <span class="hljs-built_in">log</span> --pretty=format:<span class="hljs-string">&#x27;%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr)%C(yellow)&lt;%an&gt;%Creset&#x27;</span>
+</code></pre>
+<ul>
+<li><code>%C(color_name)</code> option colors the output that comes after it</li>
+<li><code>%h</code> abbreviates commit hash</li>
+<li><code>%Creset</code> resets color to default terminal color</li>
+<li><code>%d</code> ref names</li>
+<li><code>%s</code> subject [commit message]</li>
+<li><code>%cr</code> committer date, relative to current date</li>
+<li><code>%an</code> author name</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-marpit-scope-uq7JVhzu="" data-paginate="true" data-header="**Browsing the history 2 📜**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="18" data-marpit-pagination-total="71" style="--paginate:true;--header:**Browsing the history 2 📜**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Browsing the history 2 <img class="emoji" draggable="false" alt="📜" src="https://twemoji.maxcdn.com/2/svg/1f4dc.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Search for <strong>changes</strong> in <strong>lines containing</strong> specific string<pre><code class="language-bash">git <span class="hljs-built_in">log</span> -G <span class="hljs-string">&quot;#define MODEM_COMMAND_TIMEOUT_MODE_CHANGE&quot;</span>
+</code></pre>
+</li>
+<li>Search <strong>commit string</strong> in git log<pre><code class="language-bash">git <span class="hljs-built_in">log</span> --all --grep <span class="hljs-string">&quot;esp_modem&quot;</span>
+</code></pre>
+</li>
+<li>Filter logs<pre><code class="language-bash">git <span class="hljs-built_in">log</span> --since <span class="hljs-string">&#x27;3 days ago&#x27;</span>
+git <span class="hljs-built_in">log</span> --author=morris
+</code></pre>
+</li>
+<li>Show the commits that are on <code>foo</code> branch but not on <code>master</code> with command:<pre><code class="language-bash">git <span class="hljs-built_in">log</span> master..foo
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-scope-fGubuibj="" data-paginate="true" data-header="**Aliases 🔨**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="19" data-marpit-pagination-total="71" style="--paginate:true;--header:**Aliases 🔨**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Aliases <img class="emoji" draggable="false" alt="🔨" src="https://twemoji.maxcdn.com/2/svg/1f528.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Avoid typing pretty big commands by creating aliases:
+<ul>
+<li>with the command line</li>
+</ul>
+<pre><code class="language-bash">git config --global alias.ci <span class="hljs-string">&quot;commit&quot;</span>
+git config --global alias.st <span class="hljs-string">&quot;status&quot;</span>
+</code></pre>
+<ul>
+<li>with the <code>~/.gitconfig</code> file</li>
+</ul>
+<pre><code class="language-bash">[<span class="hljs-built_in">alias</span>]
+    ci = commit
+    st = status
+    gl  = <span class="hljs-built_in">log</span> -n 20 --date-order --format=\&quot;%Cgreen%h %Cred[%ci] %Creset
+    &lt;%an&gt;%C(yellow)%d%Creset %Creset %Cgreen%s %Creset \&quot;
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="**Staging 1 🎍**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="20" data-marpit-pagination-total="71" style="--paginate:true;--header:**Staging 1 🎍**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Staging 1 <img class="emoji" draggable="false" alt="🎍" src="https://twemoji.maxcdn.com/2/svg/1f38d.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>If you have changed a lot of files in the directory, rather than listing each one of them, you could use:
+<ul>
+<li><code>git add --all</code> to add all changes</li>
+<li><code>git add .</code> to add all changes, <em>not including files that have been deleted</em>, from the top-level directory and subdirectory</li>
+<li><code>git add -u</code> only add files which are currently tracked (&quot;updated&quot;)</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-scope-E2DcZdOt="" data-paginate="true" data-header="**Staging 2 🎍**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="21" data-marpit-pagination-total="71" style="--paginate:true;--header:**Staging 2 🎍**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Staging 2 <img class="emoji" draggable="false" alt="🎍" src="https://twemoji.maxcdn.com/2/svg/1f38d.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Unstage a file that contains changes<pre><code class="language-bash">git restore --stage &lt;file&gt;
+</code></pre>
+</li>
+<li>Show staged changes<pre><code class="language-bash">git diff --cached
+</code></pre>
+</li>
+<li>Stage deleted files<pre><code class="language-bash">git rm filename
+</code></pre>
+</li>
+<li>To delete the file from git without removing it from disk<pre><code class="language-bash">git rm --cached filename
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-scope-tGJ4ybIt="" data-paginate="true" data-header="**Ignore 1 🤷🏻**" data-footer="**[Sample files](https://github.com/github/gitignore) 💗 [Online Tool](https://www.toptal.com/developers/gitignore)**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="22" data-marpit-pagination-total="71" style="--paginate:true;--header:**Ignore 1 🤷🏻**;--footer:**[Sample files](https://github.com/github/gitignore) 💗 [Online Tool](https://www.toptal.com/developers/gitignore)**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Ignore 1 <img class="emoji" draggable="false" alt="🤷🏻" src="https://twemoji.maxcdn.com/2/svg/1f937-1f3fb.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>
+<p>For files that you want never under version control, create a file named <code>.gitignore</code> <strong>before</strong> staging</p>
+<ul>
+<li>Can created in top level directory or sub-directories</li>
+<li>Rules will apply recursively to all files and sub-directories</li>
+</ul>
+<pre><code># ignore files called '.config'
+.config
+# ingore directories
+bin/
+# ignore files by extension
+*.o
+# matches all files 'foo.txt' in 'bar' and all sub-directories
+bar/**/foo.txt
+# ignore all .a files but lib.a
+*.a
+!lib.a
+</code></pre>
+</li>
+</ul>
+<footer><strong><a href="https://github.com/github/gitignore">Sample files</a> <img class="emoji" draggable="false" alt="💗" src="https://twemoji.maxcdn.com/2/svg/1f497.svg" data-marp-twemoji=""/> <a href="https://www.toptal.com/developers/gitignore">Online Tool</a></strong></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-scope-6gbM4ZT2="" data-paginate="true" data-header="**Ignore 2 🤷🏻**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="23" data-marpit-pagination-total="71" style="--paginate:true;--header:**Ignore 2 🤷🏻**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Ignore 2 <img class="emoji" draggable="false" alt="🤷🏻" src="https://twemoji.maxcdn.com/2/svg/1f937-1f3fb.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Create an empty folder
+<ul>
+<li>Create the required directory and add a <code>.gitkeep</code> file to the folder</li>
+</ul>
+</li>
+<li>Clean up ignored files<pre><code class="language-bash">git clean -Xn <span class="hljs-comment"># display a list of ignored files</span>
+git clean -Xf <span class="hljs-comment"># remove the previously displayed files</span>
+</code></pre>
+</li>
+<li>Find files ignored by <code>.gitignore</code><pre><code class="language-bash">git status --ignored
+</code></pre>
+</li>
+<li>Ignore subsequent changes to a file without removing it<pre><code class="language-bash">git update-index --assum-unchanged my-file.txt
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-scope-N8ZG82Kc="" data-paginate="true" data-header="**Committing 1 🙋‍♂️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="24" data-marpit-pagination-total="71" style="--paginate:true;--header:**Committing 1 🙋‍♂️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Committing 1 <img class="emoji" draggable="false" alt="🙋‍♂️" src="https://twemoji.maxcdn.com/2/svg/1f64b-200d-2642-fe0f.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>If you didn't create any new files, you can combine <code>git add</code> and <code>git commit</code> into a single command:<pre><code class="language-bash">git commit -am <span class="hljs-string">&quot;Commit message here&quot;</span>
+</code></pre>
+</li>
+<li>If your latest commit is not published yet, then you can put the current staged changes onto the previous commit.<pre><code class="language-bash">git commit --amend
+</code></pre>
+<ul>
+<li><em>This can also be used to edit an incorrect commit message</em></li>
+<li>If the earlier commit had already been pushed, after amending it you will have to push with <code>--force</code> option.</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-scope-ZdsSHGTy="" data-paginate="true" data-header="**Committing 2 🙋‍♂️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="25" data-marpit-pagination-total="71" style="--paginate:true;--header:**Committing 2 🙋‍♂️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Committing 2 <img class="emoji" draggable="false" alt="🙋‍♂️" src="https://twemoji.maxcdn.com/2/svg/1f64b-200d-2642-fe0f.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>If you make a commit as the wrong author, you can change it and then amend<pre><code class="language-bash">git config user.name <span class="hljs-string">&quot;new name&quot;</span>
+git config user.email <span class="hljs-string">&quot;email@example.com&quot;</span>
+git commit --amend --reset-author
+</code></pre>
+</li>
+<li>Commit on behalf on someone else<pre><code class="language-bash">git commit -m <span class="hljs-string">&quot;message&quot;</span> --author <span class="hljs-string">&quot;John Smith &lt;johnsmith@example.com&gt;&quot;</span>
+</code></pre>
+</li>
+<li>Commit at a specific date<pre><code class="language-bash">git commit -m <span class="hljs-string">&quot;Fix memory leak&quot;</span> --date 2018-07-03
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-scope-8jniDQCH="" data-paginate="true" data-header="**Good Commit Message 💯**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="26" data-marpit-pagination-total="71" style="--paginate:true;--header:**Good Commit Message 💯**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Good Commit Message <img class="emoji" draggable="false" alt="💯" src="https://twemoji.maxcdn.com/2/svg/1f4af.svg" data-marp-twemoji=""/></strong></header>
+<pre><code class="language-bash">vfs/fatfs: fix <span class="hljs-built_in">stat</span> call failing when called <span class="hljs-keyword">for</span> mount point
+
+FATFS does not support f_stat call <span class="hljs-keyword">for</span> drive root. When handling <span class="hljs-built_in">stat</span>
+<span class="hljs-keyword">for</span> drive root, don<span class="hljs-string">&#x27;t call f_stat and just return struct st with S_IFDIR
+flag set.
+
+Closes https://github.com/espressif/esp-idf/issues/984
+</span></code></pre>
+<ul>
+<li>Separate the subject line from body with a blank line</li>
+<li>Limit the subject line to 50 characters</li>
+<li>Do not end the subject line with a period</li>
+<li>Manually wrap each line of the body at 72 characters</li>
+<li>Use the body to explain <strong>what</strong> and <strong>why</strong> instead of <strong>how</strong></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-marpit-scope-bPzqXuj7="" data-paginate="true" data-header="**Diff 1 📽️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="27" data-marpit-pagination-total="71" style="--paginate:true;--header:**Diff 1 📽️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Diff 1 <img class="emoji" draggable="false" alt="📽️" src="https://twemoji.maxcdn.com/2/svg/1f4fd.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Show <em>unstaged</em> changes on current branch from the commit before it<pre><code class="language-bash">git diff
+</code></pre>
+</li>
+<li>Show differences for stages files<pre><code class="language-bash">git diff --staged
+</code></pre>
+</li>
+<li>Show both staged and unstaged changes<pre><code class="language-bash">git diff HEAD
+</code></pre>
+</li>
+<li>Show changes between two commits<pre><code class="language-bash">git diff 1234abc..6789def <span class="hljs-comment"># old..new</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-scope-TIba2vXG="" data-paginate="true" data-header="**Diff 2 📽️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="28" data-marpit-pagination-total="71" style="--paginate:true;--header:**Diff 2 📽️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Diff 2 <img class="emoji" draggable="false" alt="📽️" src="https://twemoji.maxcdn.com/2/svg/1f4fd.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Show the difference of a file between separate commits<pre><code class="language-bash">git diff 1234abc 6789def myfile.txt
+</code></pre>
+</li>
+<li>Produce a patch-compatible diff<pre><code class="language-bash">git diff --no-prefix &gt; some_file.patch
+</code></pre>
+Then somewhere else you can reverse it:<pre><code class="language-bash">patch -p0 &lt; some_file.patch
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Reset 🚨**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="29" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reset 🚨**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/soft_reset.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/hard_reset.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="**Reset 🚨**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="29" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reset 🚨**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Reset <img class="emoji" draggable="false" alt="🚨" src="https://twemoji.maxcdn.com/2/svg/1f6a8.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="29" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Recovering 🏥**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="30" data-marpit-pagination-total="71" style="--paginate:true;--header:**Recovering 🏥**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/reflog.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/reflog_reset.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="**Recovering 🏥**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="30" data-marpit-pagination-total="71" style="--paginate:true;--header:**Recovering 🏥**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Recovering <img class="emoji" draggable="false" alt="🏥" src="https://twemoji.maxcdn.com/2/svg/1f3e5.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="30" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-scope-k2eWpeoD="" data-paginate="true" data-header="**Undoing 🔙**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="31" data-marpit-pagination-total="71" style="--paginate:true;--header:**Undoing 🔙**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Undoing <img class="emoji" draggable="false" alt="🔙" src="https://twemoji.maxcdn.com/2/svg/1f519.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Undo changes to a file or directory in the <strong>working copy</strong><pre><code class="language-bash">git checkout -- file.txt
+</code></pre>
+</li>
+<li>To <strong>temporarily</strong> jump back to a commit, detach your head<pre><code class="language-bash">git checkout 789abcd
+</code></pre>
+This places you at commit 789abcd, you can now make new commits on top this old commit without affecting the branch your head is on.</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-scope-ghqRtJBP="" data-paginate="true" data-header="**Branching 1 🌳**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="32" data-marpit-pagination-total="71" style="--paginate:true;--header:**Branching 1 🌳**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Branching 1 <img class="emoji" draggable="false" alt="🌳" src="https://twemoji.maxcdn.com/2/svg/1f333.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Create a new branch, while staying on the current branch<pre><code class="language-bash">git branch &lt;name&gt; [&lt;start-point&gt;]
+</code></pre>
+</li>
+<li>Switch to an existing branch<pre><code class="language-bash">git checkout &lt;name&gt;
+</code></pre>
+</li>
+<li>Create a new branch and switch to it<pre><code class="language-bash">git checkout -b &lt;name&gt; [&lt;start-point&gt;]
+</code></pre>
+</li>
+<li><strong>&lt;start-point&gt;</strong> can be any revision known to git (e.g. branch name, commit SHA, symbolic reference such as HEAD or a tag name)</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-scope-aSLJ5l81="" data-paginate="true" data-header="**Branching 2 🌳**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="33" data-marpit-pagination-total="71" style="--paginate:true;--header:**Branching 2 🌳**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Branching 2 <img class="emoji" draggable="false" alt="🌳" src="https://twemoji.maxcdn.com/2/svg/1f333.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Create a branch from a remote branch<pre><code class="language-bash">git checkout -b &lt;name&gt; &lt;remote_name&gt;/&lt;branch_name&gt;
+</code></pre>
+</li>
+<li>Listing branches<pre><code class="language-bash">git branch <span class="hljs-comment"># List local branches</span>
+git branch -r <span class="hljs-comment"># List remote branches</span>
+git branch -a <span class="hljs-comment"># List remote and local branches</span>
+</code></pre>
+</li>
+<li>Delete a remote branch<pre><code class="language-bash">git push origin --delete &lt;branchName&gt;
+</code></pre>
+</li>
+<li>Delete a local branch<pre><code class="language-bash">git branch -d &lt;branchName&gt; <span class="hljs-comment"># Won&#x27;t delete the branch if it has unmerged changes</span>
+git branch -D &lt;branchName&gt; <span class="hljs-comment"># Delete it event if it has unmerged changes</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-marpit-scope-mKASLXs8="" data-paginate="true" data-header="**Branching 3 🌳**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="34" data-marpit-pagination-total="71" style="--paginate:true;--header:**Branching 3 🌳**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Branching 3 <img class="emoji" draggable="false" alt="🌳" src="https://twemoji.maxcdn.com/2/svg/1f333.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Quick switch to the previous branch<pre><code class="language-bash">git checkout -
+</code></pre>
+</li>
+<li>Rename a branch
+<ul>
+<li>rename the branch you have already checked out</li>
+</ul>
+<pre><code class="language-bash">git branch -m new_branch_name
+</code></pre>
+<ul>
+<li>rename another branch</li>
+</ul>
+<pre><code class="language-bash">git branch -m branch_you_want_rename new_branch_name
+</code></pre>
+</li>
+<li>List local and remote branches that contain a specific commit<pre><code class="language-bash">git branch -a --contains &lt;commit&gt;
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-marpit-scope-0EHcaxG9="" data-paginate="true" data-header="**Branching Model 🧾**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="35" data-marpit-pagination-total="71" style="--paginate:true;--header:**Branching Model 🧾**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Branching Model <img class="emoji" draggable="false" alt="🧾" src="https://twemoji.maxcdn.com/2/svg/1f9fe.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li><strong>master branch</strong> <img class="emoji" draggable="false" alt="👍" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" data-marp-twemoji=""/>
+<ul>
+<li>Name: <code>master</code></li>
+<li>Where <em>integration</em> happens</li>
+<li>Produce working code which compiles and passes CI tests</li>
+</ul>
+</li>
+<li><strong>feature and bugfix branches</strong> <img class="emoji" draggable="false" alt="🐞" src="https://twemoji.maxcdn.com/2/svg/1f41e.svg" data-marp-twemoji=""/>
+<ul>
+<li>Name: <code>feature/xxx</code> and <code>bugfix/xxx</code></li>
+<li>Where <em>development</em> happens</li>
+<li>May contain broken or incomplete or testing code</li>
+</ul>
+</li>
+<li><strong>release branches</strong> <img class="emoji" draggable="false" alt="💪🏽" src="https://twemoji.maxcdn.com/2/svg/1f4aa-1f3fd.svg" data-marp-twemoji=""/>
+<ul>
+<li>Name: <code>release/v4.0</code></li>
+<li>Where releases are maintained and bugfixes are backported to</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-marpit-scope-2gmmXILE="" data-paginate="true" data-header="**Clone a repository☕**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="36" data-marpit-pagination-total="71" style="--paginate:true;--header:**Clone a repository☕**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Clone a repository<img class="emoji" draggable="false" alt="☕" src="https://twemoji.maxcdn.com/2/svg/2615.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>The <code>git clone</code> command is used to copy an existing Git repository from a server to your local machine<pre><code class="language-bash"><span class="hljs-built_in">cd</span> &lt;path <span class="hljs-built_in">where</span> you would like to <span class="hljs-built_in">clone</span> to create a directory&gt;
+git <span class="hljs-built_in">clone</span> https://github.com/username/projectname.git
+<span class="hljs-comment"># ssh version of the command</span>
+git <span class="hljs-built_in">clone</span> git@github.com:username/projectname.git
+</code></pre>
+</li>
+<li>If you don't need to have the full history available, you can do a shallow clone<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> [repo_url] --depth 1
+</code></pre>
+<ul>
+<li>later, if required, you can fetch the rest of the repository</li>
+</ul>
+<pre><code class="language-bash">git fetch --unshallow
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-marpit-scope-4oLP0Wnp="" data-paginate="true" data-header="**Working with Remotes 1 🏓**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="37" data-marpit-pagination-total="71" style="--paginate:true;--header:**Working with Remotes 1 🏓**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Working with Remotes 1 <img class="emoji" draggable="false" alt="🏓" src="https://twemoji.maxcdn.com/2/svg/1f3d3.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>List existing remotes<pre><code class="language-bash">git remote -v
+</code></pre>
+</li>
+<li>Change Git remote URL<pre><code class="language-bash">git remote set-url remote-name https://github.com/username/repo2.git
+</code></pre>
+</li>
+<li>Add a new remote repository<pre><code class="language-bash">git remote add github git-repository-url
+</code></pre>
+</li>
+<li>Push to a remote branch<pre><code class="language-bash">git push &lt;remote_name&gt; &lt;branch_name&gt;
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-marpit-scope-DHztuv22="" data-paginate="true" data-header="**Working with Remotes 2 🏓**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="38" data-marpit-pagination-total="71" style="--paginate:true;--header:**Working with Remotes 2 🏓**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Working with Remotes 2 <img class="emoji" draggable="false" alt="🏓" src="https://twemoji.maxcdn.com/2/svg/1f3d3.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Delete a remote branch<pre><code class="language-bash">git push [remote-name] --delete [branch-name]
+</code></pre>
+</li>
+<li>Remove local copies of deleted remote branches<pre><code class="language-bash">git fetch [remote-name] --prune
+</code></pre>
+</li>
+<li>Updating from upstream repository<pre><code class="language-bash">git fetch remote-name
+git merge remote-name/branch-name
+</code></pre>
+<ul>
+<li><code>git pull</code> combines a <code>fetch</code> and a <code>merge</code></li>
+<li><code>git pull --rebase remote-name branch-name</code> combines a <code>fetch</code> and a <code>rebase</code></li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Fetch 🆚 Pull**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="39" data-marpit-pagination-total="71" style="--paginate:true;--header:**Fetch 🆚 Pull**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/fetch.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/pull.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="**Fetch 🆚 Pull**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="39" data-marpit-pagination-total="71" style="--paginate:true;--header:**Fetch 🆚 Pull**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Fetch <img class="emoji" draggable="false" alt="🆚" src="https://twemoji.maxcdn.com/2/svg/1f19a.svg" data-marp-twemoji=""/> Pull</strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="39" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Merging (ff) 👪**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="40" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merging (ff) 👪**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/merge_ff.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="40" data-paginate="true" data-header="**Merging (ff) 👪**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="40" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merging (ff) 👪**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Merging (ff) <img class="emoji" draggable="false" alt="👪" src="https://twemoji.maxcdn.com/2/svg/1f46a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>No new commit created</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="40" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Merging (no-ff) 👪**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="41" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merging (no-ff) 👪**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/merge_no_ff.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="41" data-paginate="true" data-header="**Merging (no-ff) 👪**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="41" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merging (no-ff) 👪**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Merging (no-ff) <img class="emoji" draggable="false" alt="👪" src="https://twemoji.maxcdn.com/2/svg/1f46a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>New commit created</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="41" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-HSavI5q4="" data-paginate="true" data-header="**Reverting ❎**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="42" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reverting ❎**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/revert.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="42" data-marpit-scope-HSavI5q4="" data-paginate="true" data-header="**Reverting ❎**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="42" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reverting ❎**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Reverting <img class="emoji" draggable="false" alt="❎" src="https://twemoji.maxcdn.com/2/svg/274e.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Undo a certain commit without modifying history</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="42" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Solve Conflict 💣**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="43" data-marpit-pagination-total="71" style="--paginate:true;--header:**Solve Conflict 💣**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/conflict.png&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/solve_conflict.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-header="**Solve Conflict 💣**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="43" data-marpit-pagination-total="71" style="--paginate:true;--header:**Solve Conflict 💣**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Solve Conflict <img class="emoji" draggable="false" alt="💣" src="https://twemoji.maxcdn.com/2/svg/1f4a3.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="43" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-mU57faf2="" data-paginate="true" data-header="**Rebasing 🕹️**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="44" data-marpit-pagination-total="71" style="--paginate:true;--header:**Rebasing 🕹️**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/rebase.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="44" data-marpit-scope-mU57faf2="" data-paginate="true" data-header="**Rebasing 🕹️**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="44" data-marpit-pagination-total="71" style="--paginate:true;--header:**Rebasing 🕹️**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Rebasing <img class="emoji" draggable="false" alt="🕹️" src="https://twemoji.maxcdn.com/2/svg/1f579.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>It changes the history of the project</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="44" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-marpit-scope-OODJqvnQ="" data-paginate="true" data-header="**Interactive Rebasing 🕹️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="45" data-marpit-pagination-total="71" style="--paginate:true;--header:**Interactive Rebasing 🕹️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Interactive Rebasing <img class="emoji" draggable="false" alt="🕹️" src="https://twemoji.maxcdn.com/2/svg/1f579.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Using interactive rebase, the user can <strong>reword</strong>, <strong>reorder</strong>, <strong>drop</strong>, <strong>split</strong>, <strong>squash</strong> commits</li>
+<li>Rearrange your last three commits<pre><code class="language-bash">git rebase -i HEAD~3
+</code></pre>
+<ul>
+<li>A file will be opened in your text editor where you will be able to select how your commits will be rebased.</li>
+<li>After you changed the file, save it and close the editor.</li>
+<li>This will initiate a rebase with the changes you've applied.</li>
+</ul>
+</li>
+<li>Aborting an interactive rebase<pre><code class="language-bash">git rebase --abort
+</code></pre>
+</li>
+<li><strong>git push</strong> complains because your rebase has rewrote the history<pre><code class="language-bash">git push --force-with-lease <span class="hljs-comment"># this can be solved appending a &quot;force&quot; option</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-WU7owmPy="" data-paginate="true" data-header="**Reorder Commits 🔁**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="46" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reorder Commits 🔁**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/reorder.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="46" data-marpit-scope-WU7owmPy="" data-paginate="true" data-header="**Reorder Commits 🔁**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="46" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reorder Commits 🔁**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Reorder Commits <img class="emoji" draggable="false" alt="🔁" src="https://twemoji.maxcdn.com/2/svg/1f501.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Reorder the commits in the opened text editor</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="46" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Drop Commits 💧**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="47" data-marpit-pagination-total="71" style="--paginate:true;--header:**Drop Commits 💧**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/rebase_drop.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/drop.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-header="**Drop Commits 💧**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="47" data-marpit-pagination-total="71" style="--paginate:true;--header:**Drop Commits 💧**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Drop Commits <img class="emoji" draggable="false" alt="💧" src="https://twemoji.maxcdn.com/2/svg/1f4a7.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="47" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-dWzajzmr="" data-paginate="true" data-header="**Reword Commits 💬**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="48" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reword Commits 💬**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/reword.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="48" data-marpit-scope-dWzajzmr="" data-paginate="true" data-header="**Reword Commits 💬**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="48" data-marpit-pagination-total="71" style="--paginate:true;--header:**Reword Commits 💬**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Reword Commits <img class="emoji" draggable="false" alt="💬" src="https://twemoji.maxcdn.com/2/svg/1f4ac.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Replace <em>pick</em> with <em>reword</em> instead</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="48" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Squash Commits 📥**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="49" data-marpit-pagination-total="71" style="--paginate:true;--header:**Squash Commits 📥**;--class:invert;--theme:uncover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/rebase_squash.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/squash.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-header="**Squash Commits 📥**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="49" data-marpit-pagination-total="71" style="--paginate:true;--header:**Squash Commits 📥**;--class:invert;--theme:uncover;" data-marpit-advanced-background="content">
+<header><strong>Squash Commits <img class="emoji" draggable="false" alt="📥" src="https://twemoji.maxcdn.com/2/svg/1f4e5.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="49" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-oZ2AH4Zd="" data-paginate="true" data-header="**Split Commit 🪓**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="50" data-marpit-pagination-total="71" style="--paginate:true;--header:**Split Commit 🪓**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/split.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="50" data-marpit-scope-oZ2AH4Zd="" data-paginate="true" data-header="**Split Commit 🪓**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="50" data-marpit-pagination-total="71" style="--paginate:true;--header:**Split Commit 🪓**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Split Commit <img class="emoji" draggable="false" alt="🪓" src="https://twemoji.maxcdn.com/2/svg/1fa93.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Replace <em>pick</em> with <em>edit</em> instead</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="50" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-DHTaQ7Mj="" data-paginate="true" data-header="**Cherry Picking 🍒**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="51" data-marpit-pagination-total="71" style="--paginate:true;--header:**Cherry Picking 🍒**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/cherry-pick.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="30%" height="720" x="70%"><section id="51" data-marpit-scope-DHTaQ7Mj="" data-paginate="true" data-header="**Cherry Picking 🍒**" data-class="invert" data-theme="uncover" class="invert" data-marpit-pagination="51" data-marpit-pagination-total="71" style="--paginate:true;--header:**Cherry Picking 🍒**;--class:invert;--theme:uncover;--marpit-advanced-background-split:70%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Cherry Picking <img class="emoji" draggable="false" alt="🍒" src="https://twemoji.maxcdn.com/2/svg/1f352.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>The new commit <em>9e78i</em> has the same content as <em>76d12</em> but a different parent</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="51" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-marpit-scope-scsDzwBb="" data-paginate="true" data-header="**Stashing 1 🧱**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="52" data-marpit-pagination-total="71" style="--paginate:true;--header:**Stashing 1 🧱**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Stashing 1 <img class="emoji" draggable="false" alt="🧱" src="https://twemoji.maxcdn.com/2/svg/1f9f1.svg" data-marp-twemoji=""/></strong></header>
+
+<p><img src="assets/stash.png" alt="" /></p>
+<blockquote>
+<p>When working on a project, you might be <strong>half-way</strong> through a feature branch change when a bug is raised against master. You're <strong>not ready to commit</strong> your code, but you also don't want to lose your changes. This is where <strong>git stash</strong> comes in handy.</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-marpit-scope-ZmPIGb17="" data-paginate="true" data-header="**Stashing 2 🧱**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="53" data-marpit-pagination-total="71" style="--paginate:true;--header:**Stashing 2 🧱**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Stashing 2 <img class="emoji" draggable="false" alt="🧱" src="https://twemoji.maxcdn.com/2/svg/1f9f1.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Save the current state of working directory in a stack of stashes<pre><code class="language-bash">git stash
+git stash --include-untracked <span class="hljs-comment"># include all untracked files</span>
+git stash save <span class="hljs-string">&quot;&lt;whatever message&gt;&quot;</span> <span class="hljs-comment"># include a message with stash</span>
+</code></pre>
+</li>
+<li>List saved stashed<pre><code class="language-bash">git stash list
+</code></pre>
+</li>
+<li>Apply the last stash and remove it from the stack<pre><code class="language-bash">git stash pop
+git stash pop stash@{n} <span class="hljs-comment"># apply specific stash and remove it from stack</span>
+</code></pre>
+</li>
+<li>Apply the last stash without removing it from the stack<pre><code class="language-bash">git stash apply
+</code></pre>
+</li>
+<li>Remove stash<pre><code class="language-bash">git stash clear <span class="hljs-comment"># remove all stash</span>
+git stash drop <span class="hljs-comment"># remove the last stash</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-marpit-scope-6BVH5EU0="" data-paginate="true" data-header="**Worktree 🌳**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="54" data-marpit-pagination-total="71" style="--paginate:true;--header:**Worktree 🌳**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Worktree <img class="emoji" draggable="false" alt="🌳" src="https://twemoji.maxcdn.com/2/svg/1f333.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Create a new directory with the specified branch checked out into it<pre><code class="language-bash">git worktree add path/to/directory -b new_branch
+</code></pre>
+</li>
+<li>List all the working directories attached to this repository<pre><code class="language-bash">git worktree list
+</code></pre>
+</li>
+<li>Remove a worktree (after deleting worktree directory)<pre><code class="language-bash">git worktree prune
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-marpit-scope-JJtmk3QZ="" data-paginate="true" data-header="**Tagging 🔖**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="55" data-marpit-pagination-total="71" style="--paginate:true;--header:**Tagging 🔖**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Tagging <img class="emoji" draggable="false" alt="🔖" src="https://twemoji.maxcdn.com/2/svg/1f516.svg" data-marp-twemoji=""/></strong></header>
+
+<blockquote>
+<p>To tag specific points in history (e.g. release point) as being important.</p>
+</blockquote>
+<ul>
+<li>List all available tags<pre><code class="language-bash">git tag
+</code></pre>
+</li>
+<li>Create a tag on your current branch<pre><code class="language-bash">git tag &lt;tag_name&gt;
+</code></pre>
+</li>
+<li>Create a tag with some commit<pre><code class="language-bash">git tag tag-name commit-id
+</code></pre>
+</li>
+<li>Push a commit to remote<pre><code class="language-bash">git push origin tag-name
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-marpit-scope-tIYMaj21="" data-paginate="true" data-header="**Submodules 1 🍪**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="56" data-marpit-pagination-total="71" style="--paginate:true;--header:**Submodules 1 🍪**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Submodules 1 <img class="emoji" draggable="false" alt="🍪" src="https://twemoji.maxcdn.com/2/svg/1f36a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Cloning a Git repository having submodules<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> --recursive https://github.com/username/repo.git
+</code></pre>
+<ul>
+<li>This is equivalent to running the following command after the clone is finished<pre><code class="language-bash">git submodules update --init --recursive
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Include another Git repository as a folder within your project, tracked by Git:<pre><code class="language-bash">git submodule add https://github.com/ARMmbed/littlefs.git
+</code></pre>
+<ul>
+<li>you should add and commit <code>.gitmodules</code> file, telling Git what submodules should be cloned when <code>git submodule update</code> is run</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-header="**Submodules 2 🍪**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="57" data-marpit-pagination-total="71" style="--paginate:true;--header:**Submodules 2 🍪**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Submodules 2 <img class="emoji" draggable="false" alt="🍪" src="https://twemoji.maxcdn.com/2/svg/1f36a.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Moving a submodule<pre><code class="language-bash">git mv /path/to/module new/path/to/module
+</code></pre>
+</li>
+<li>Removing a submodule (e.g. the_submodule)<pre><code class="language-bash">git submodule deinit the_submodule
+git rm the_submodule
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-marpit-scope-qAt7owMl="" data-paginate="true" data-header="**Finding faulty commits ⭕**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="58" data-marpit-pagination-total="71" style="--paginate:true;--header:**Finding faulty commits ⭕**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Finding faulty commits <img class="emoji" draggable="false" alt="⭕" src="https://twemoji.maxcdn.com/2/svg/2b55.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>To find which commit introduced a bug using a binary search.<pre><code class="language-bash"><span class="hljs-comment"># start the git bisect</span>
+git bisect start
+<span class="hljs-comment"># give a commit where the bug doesn&#x27;t exist</span>
+git bisect good 49c747d
+<span class="hljs-comment"># give a commit where the bug exist</span>
+git bisect bad HEAD
+</code></pre>
+</li>
+<li>Git splits the revision in half and switches the repository to the intermediate revision.
+<ul>
+<li>Inspect the code to determine if the revision is good or bad:</li>
+</ul>
+<pre><code class="language-bash"><span class="hljs-comment"># tell git the revision is good</span>
+git bisect good
+<span class="hljs-comment"># if the revision contains the bug, then tell git it&#x27;s bad</span>
+git bisect bad
+</code></pre>
+</li>
+<li>To abort the bisect process, just issue <code>git bisect reset</code></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-marpit-scope-BL7uWSYZ="" data-paginate="true" data-header="**Blaming 🤔**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="59" data-marpit-pagination-total="71" style="--paginate:true;--header:**Blaming 🤔**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Blaming <img class="emoji" draggable="false" alt="🤔" src="https://twemoji.maxcdn.com/2/svg/1f914.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Find out who changed a file
+<ul>
+<li>show the author and commit per line of the specified file</li>
+</ul>
+<pre><code class="language-bash">git blame test.c
+</code></pre>
+<ul>
+<li>ignore whitespace-only changes</li>
+</ul>
+<pre><code class="language-bash">git blame -w test.c
+</code></pre>
+<ul>
+<li>limits the selection of lines by specified range</li>
+</ul>
+<pre><code class="language-bash">git blame -L 1,10 test.c
+</code></pre>
+<ul>
+<li>+offset, -offset</li>
+</ul>
+<pre><code class="language-bash">git blame -L 108,+30 test.c
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-marpit-scope-iFZs2sZs="" data-paginate="true" data-header="**Patch 👖**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="60" data-marpit-pagination-total="71" style="--paginate:true;--header:**Patch 👖**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Patch <img class="emoji" draggable="false" alt="👖" src="https://twemoji.maxcdn.com/2/svg/1f456.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Create a patch
+<ul>
+<li>Make your changes and commit them</li>
+<li>Convert commits into patch files</li>
+</ul>
+<pre><code class="language-bash"><span class="hljs-comment"># convert all commits since &lt;commit-reference&gt; (not including it)</span>
+git format-patch &lt;commit-reference&gt;
+</code></pre>
+</li>
+<li>Apply patches
+<ul>
+<li>Have the changes from the <code>.patch</code> file applied to your current working directory (unstaged)</li>
+</ul>
+<pre><code class="language-bash">git apply some.patch
+</code></pre>
+<ul>
+<li>Apply a patch as a commit</li>
+</ul>
+<pre><code class="language-bash">git am some.patch
+git am *.patch <span class="hljs-comment"># apply all patch files</span>
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-paginate="true" data-header="**Clean 🧹**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="61" data-marpit-pagination-total="71" style="--paginate:true;--header:**Clean 🧹**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+<header><strong>Clean <img class="emoji" draggable="false" alt="🧹" src="https://twemoji.maxcdn.com/2/svg/1f9f9.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Clean interactively<pre><code class="language-bash">git clean -i
+</code></pre>
+</li>
+<li>Forcefully remove untracked files<pre><code class="language-bash">git clean -f
+</code></pre>
+</li>
+<li>Clean ignored files<pre><code class="language-bash">git clean -fx
+</code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Git GUI**" data-footer="**[SmartGit](https://www.syntevo.com/smartgit/) 💗 [Sourcetree](https://www.sourcetreeapp.com/) 💗 [Lazygit](https://github.com/jesseduffield/lazygit)**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="62" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git GUI**;--footer:**[SmartGit](https://www.syntevo.com/smartgit/) 💗 [Sourcetree](https://www.sourcetreeapp.com/) 💗 [Lazygit](https://github.com/jesseduffield/lazygit)**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/smartgit.png&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/sourcetree.png&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-header="**Git GUI**" data-footer="**[SmartGit](https://www.syntevo.com/smartgit/) 💗 [Sourcetree](https://www.sourcetreeapp.com/) 💗 [Lazygit](https://github.com/jesseduffield/lazygit)**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="62" data-marpit-pagination-total="71" style="--paginate:true;--header:**Git GUI**;--footer:**[SmartGit](https://www.syntevo.com/smartgit/) 💗 [Sourcetree](https://www.sourcetreeapp.com/) 💗 [Lazygit](https://github.com/jesseduffield/lazygit)**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="content">
+<header><strong>Git GUI</strong></header>
+<footer><strong><a href="https://www.syntevo.com/smartgit/">SmartGit</a> <img class="emoji" draggable="false" alt="💗" src="https://twemoji.maxcdn.com/2/svg/1f497.svg" data-marp-twemoji=""/> <a href="https://www.sourcetreeapp.com/">Sourcetree</a> <img class="emoji" draggable="false" alt="💗" src="https://twemoji.maxcdn.com/2/svg/1f497.svg" data-marp-twemoji=""/> <a href="https://github.com/jesseduffield/lazygit">Lazygit</a></strong></footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="62" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-background-image="linear-gradient(to bottom, #FF6D00, #FFAB40)" data-color="white" data-theme="uncover" style="--background-image:linear-gradient(to bottom, #FF6D00, #FFAB40);--color:white;--theme:uncover;color:white;background-image:linear-gradient(to bottom, #FF6D00, #FFAB40);background-position:center;background-repeat:no-repeat;background-size:cover;">
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Submit a Merge Request on GitLab <img class="emoji" draggable="false" alt="🙌🏻" src="https://twemoji.maxcdn.com/2/svg/1f64c-1f3fb.svg" data-marp-twemoji=""/></span></foreignObject></svg></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**General Workflow on GitLab 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="64" data-marpit-pagination-total="71" style="--paginate:true;--header:**General Workflow on GitLab 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/workflow.png&quot;);background-size:70%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="64" data-paginate="true" data-header="**General Workflow on GitLab 🖥️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="64" data-marpit-pagination-total="71" style="--paginate:true;--header:**General Workflow on GitLab 🖥️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="content">
+<header><strong>General Workflow on GitLab <img class="emoji" draggable="false" alt="🖥️" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="64" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Submit MR ⛷️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="65" data-marpit-pagination-total="71" style="--paginate:true;--header:**Submit MR ⛷️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/push.gif&quot;);background-size:contain;"></figure><figure style="background-image:url(&quot;assets/new_merge_request.png&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="65" data-paginate="true" data-header="**Submit MR ⛷️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="65" data-marpit-pagination-total="71" style="--paginate:true;--header:**Submit MR ⛷️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="content">
+<header><strong>Submit MR <img class="emoji" draggable="false" alt="⛷️" src="https://twemoji.maxcdn.com/2/svg/26f7.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="65" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Good MR Description 💯**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="66" data-marpit-pagination-total="71" style="--paginate:true;--header:**Good MR Description 💯**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/good_mr_description.png&quot;);background-size:60%;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="66" data-paginate="true" data-header="**Good MR Description 💯**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="66" data-marpit-pagination-total="71" style="--paginate:true;--header:**Good MR Description 💯**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;" data-marpit-advanced-background="content">
+<header><strong>Good MR Description <img class="emoji" draggable="false" alt="💯" src="https://twemoji.maxcdn.com/2/svg/1f4af.svg" data-marp-twemoji=""/></strong></header>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="66" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-HRiW6690="" data-paginate="true" data-header="**Merge Request Comments 💬**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="67" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merge Request Comments 💬**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/merge_request_comments.png&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="50%" height="720" x="50%"><section id="67" data-marpit-scope-HRiW6690="" data-paginate="true" data-header="**Merge Request Comments 💬**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="67" data-marpit-pagination-total="71" style="--paginate:true;--header:**Merge Request Comments 💬**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Merge Request Comments <img class="emoji" draggable="false" alt="💬" src="https://twemoji.maxcdn.com/2/svg/1f4ac.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Ask @bot to do tests
+<ul>
+<li>build test</li>
+<li>unit test</li>
+<li>integration test</li>
+<li>language lint</li>
+<li>...</li>
+</ul>
+</li>
+<li>Ask colleagues to review your code</li>
+<li>After you got more than <strong>Two</strong> <img class="emoji" draggable="false" alt="👍" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" data-marp-twemoji=""/> and your MR passed CI pipeline, reassign your MR to someone who has the permission to merge</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="67" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-goZo9gM3="" data-paginate="true" data-header="**Community Etiquette 💁🏻‍♂️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="68" data-marpit-pagination-total="71" style="--paginate:true;--header:**Community Etiquette 💁🏻‍♂️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/etiquette.svg&quot;);background-size:auto;"></figure></div></section></foreignObject><foreignObject width="70%" height="720" x="30%"><section id="68" data-marpit-scope-goZo9gM3="" data-paginate="true" data-header="**Community Etiquette 💁🏻‍♂️**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="68" data-marpit-pagination-total="71" style="--paginate:true;--header:**Community Etiquette 💁🏻‍♂️**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Community Etiquette <img class="emoji" draggable="false" alt="💁🏻‍♂️" src="https://twemoji.maxcdn.com/2/svg/1f481-1f3fb-200d-2642-fe0f.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>Be <strong>polite</strong>, even if the code doesn't look good to you</li>
+<li>Try best to <strong>review</strong> PR/MR within 1 week after someone asked you to</li>
+<li>If the MR looks good to you, don't forget to give a <strong>thumbup</strong> <img class="emoji" draggable="false" alt="👍" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" data-marp-twemoji=""/></li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="68" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Book Recommendation 📚**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="69" data-marpit-pagination-total="71" style="--paginate:true;--header:**Book Recommendation 📚**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:60%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/progit.png&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="40%" height="720" x="60%"><section id="69" data-paginate="true" data-header="**Book Recommendation 📚**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="69" data-marpit-pagination-total="71" style="--paginate:true;--header:**Book Recommendation 📚**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:60%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Book Recommendation <img class="emoji" draggable="false" alt="📚" src="https://twemoji.maxcdn.com/2/svg/1f4da.svg" data-marp-twemoji=""/></strong></header>
+
+<p><br />
+<a href="https://git-scm.com/book/en/v2">ProGit Book</a></p>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="69" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-header="**Learn Git the Easy Way 🍰**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="70" data-marpit-pagination-total="71" style="--paginate:true;--header:**Learn Git the Easy Way 🍰**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/game.svg&quot;);background-size:auto;"></figure></div></section></foreignObject><foreignObject width="60%" height="720" x="40%"><section id="70" data-paginate="true" data-header="**Learn Git the Easy Way 🍰**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="70" data-marpit-pagination-total="71" style="--paginate:true;--header:**Learn Git the Easy Way 🍰**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>Learn Git the Easy Way <img class="emoji" draggable="false" alt="🍰" src="https://twemoji.maxcdn.com/2/svg/1f370.svg" data-marp-twemoji=""/></strong></header>
+
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Learn by Gaming -- <code>GitHug</code></span></foreignObject></svg></h1>
+<p><a href="https://githug.zhang-ou.com/">GitHug Walk Through Guide</a></p>
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Learn in interactive way</span></foreignObject></svg></h1>
+<p><a href="https://learngitbranching.js.org/">Learn Git Branching</a></p>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="70" data-marpit-pagination-total="71"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-GyHVU7U4="" data-paginate="true" data-header="**QA and Acknowledgements 🤗**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="71" data-marpit-pagination-total="71" style="--paginate:true;--header:**QA and Acknowledgements 🤗**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;assets/question_answer.svg&quot;);background-size:auto;"></figure></div></section></foreignObject><foreignObject width="70%" height="720" x="30%"><section id="71" data-marpit-scope-GyHVU7U4="" data-paginate="true" data-header="**QA and Acknowledgements 🤗**" data-background-image="url('./assets/hero-background.jpg')" data-theme="uncover" data-marpit-pagination="71" data-marpit-pagination-total="71" style="--paginate:true;--header:**QA and Acknowledgements 🤗**;--background-image:url('./assets/hero-background.jpg');--theme:uncover;background-image:url('./assets/hero-background.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<header><strong>QA and Acknowledgements <img class="emoji" draggable="false" alt="🤗" src="https://twemoji.maxcdn.com/2/svg/1f917.svg" data-marp-twemoji=""/></strong></header>
+
+<ul>
+<li>@theavocoder, <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">CS Visualized: Useful Git Commands</a></li>
+<li>@Stack Overflow Documentation, <a href="https://goalkicker.com/GitBook/">Git Notes for Professionals</a></li>
+</ul>
+</section>
+<script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
+</script></foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="71" data-marpit-pagination-total="71"></section></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.4.0/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";const e=document.body,t=(...e)=>history.replaceState(...e),n="presenter",r="next",o=["",n,r],a="data-bespoke-marp-",i=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const a=e.toString();return`${t}//${n}${r}${a?"?":""}${a}${o}`},s=()=>e.dataset.bespokeView,l=e=>new URLSearchParams(location.search).get(e),c=(e,n={})=>{var r;const o={location,setter:t,...n},a=new URLSearchParams(o.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?a.set(t,n):a.delete(t)}try{o.setter({...null!==(r=window.history.state)&&void 0!==r?r:{}},"",i(a,o.location))}catch(e){console.error(e)}},d=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})(),f=e=>{try{return localStorage.getItem(e)}catch(e){return null}},u=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch(e){return!1}},m=e=>{try{return localStorage.removeItem(e),!0}catch(e){return!1}},g=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},p=e=>{e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach((e=>e.classList.add("bespoke-marp-slide"))),e.on("activate",(t=>{const n="bespoke-marp-active",r=t.slide,o=r.classList,a=!o.contains(n);if(e.slides.forEach((e=>{e.classList.remove(n),g(e,!0)})),o.add(n),g(r,!1),a){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}}))},v=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${a}fragment`,(i?"":"in")+"active");const s=`${a}current-fragment`;t===r&&n===o?e.setAttribute(s,"current"):e.removeAttribute(s)}))})),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",(({fragment:a=!0})=>{if(a){if(r(1))return o(t,n+1),!1;const a=t+1;e.fragments[a]&&o(a,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const a=e.fragments[t+1];a&&o(t+1,a.length-1)}})),e.on("prev",(({fragment:a=!0})=>{if(r(-1)&&a)return o(t,n-1),!1;const i=t-1;e.fragments[i]&&o(i,e.fragments[i].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)})),o(0,0)},h=document,y=()=>!(!h.fullscreenEnabled&&!h.webkitFullscreenEnabled),x=()=>!(!h.fullscreenElement&&!h.webkitFullscreenElement),w=e=>{e.fullscreen=()=>{y()&&(async()=>{return x()?null===(e=h.exitFullscreen||h.webkitExitFullscreen)||void 0===e?void 0:e.call(h):((e=h.body)=>{var t;return null===(t=e.requestFullscreen||e.webkitRequestFullscreen)||void 0===t?void 0:t.call(e)})();var e})()},document.addEventListener("keydown",(t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!y()||(e.fullscreen(),t.preventDefault())}))},b="bespoke-marp-inactive",k=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let a;const i=()=>{a&&clearTimeout(a),a=setTimeout((()=>{r.add(b),o()}),e),r.contains(b)&&(r.remove(b),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,i);setTimeout(i,0)},E=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],L=e=>{e.parent.addEventListener("keydown",(e=>{if(!e.target)return;const t=e.target;(E.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()}))},$=e=>{window.addEventListener("load",(()=>{for(const t of e.slides){const e=t.querySelector("[data-marp-fitting]")?"":"hideable";t.setAttribute(`${a}load`,e)}}))},P=({interval:e=250}={})=>t=>{document.addEventListener("keydown",(e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()}));let n,r,o=0;t.parent.addEventListener("wheel",(a=>{let i=!1;const s=(e,t)=>{e&&(i=i||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),(null==e?void 0:e.parentElement)&&s(e.parentElement,t)};if(0!==a.deltaX&&s(a.target,"X"),0!==a.deltaY&&s(a.target,"Y"),i)return;a.preventDefault();const l=Math.sqrt(a.deltaX**2+a.deltaY**2);if(void 0!==a.wheelDelta){if(void 0===a.webkitForce&&Math.abs(a.wheelDelta)<40)return;if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<4)return}else if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout((()=>{n=0}),e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let f;(a.deltaX>0||a.deltaY>0)&&(f="next"),(a.deltaX<0||a.deltaY<0)&&(f="prev"),f&&(t[f](),o=Date.now())}))},S=(e=".bespoke-marp-osc")=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${a}osc=${JSON.stringify(e)}]`).forEach(n)};return y()||n("fullscreen",(e=>e.style.display="none")),d||n("presenter",(e=>{e.disabled=!0,e.title="Presenter view is disabled due to restricted localStorage."})),e=>{t.addEventListener("click",(t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?null==e||e.fullscreen():"presenter"===n&&e.openPresenterView()}})),e.parent.appendChild(t),e.on("activate",(({index:t})=>{n("page",(n=>n.textContent=`Page ${t+1} of ${e.slides.length}`))})),e.on("fragment",(({index:t,fragments:r,fragmentIndex:o})=>{n("prev",(e=>e.disabled=0===t&&0===o)),n("next",(n=>n.disabled=t===e.slides.length-1&&o===r.length-1))})),e.on("marp-active",(()=>g(t,!1))),e.on("marp-inactive",(()=>g(t,!0))),y()&&(e=>{for(const t of["","webkit"])h.addEventListener(t+"fullscreenchange",e)})((()=>n("fullscreen",(e=>e.classList.toggle("exit",y()&&x())))))}},I=e=>{window.addEventListener("message",(t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),a=Number.parseInt(n,10)+1;a>=e.fragments[o].length&&(o+=1,a=0),e.slide(o,{fragment:a})}}))};var T=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];let A=e=>String(e).replace(/[&<>"']/g,(e=>`&${C[e]};`)),C={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},N="dangerouslySetInnerHTML",K={className:"class",htmlFor:"for"},O={};function D(e,t){let n=[],r="";t=t||{};for(let e=arguments.length;e-- >2;)n.push(arguments[e]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(let e in t)!1!==t[e]&&null!=t[e]&&e!==N&&(r+=` ${K[e]?K[e]:A(e)}="${A(t[e])}"`);r+=">"}if(-1===T.indexOf(e)){if(t[N])r+=t[N].__html;else for(;n.length;){let e=n.pop();if(e)if(e.pop)for(let t=e.length;t--;)n.push(e[t]);else r+=!0===O[e]?e:A(e)}r+=e?`</${e}>`:""}return O[r]=!0,r}const M=({children:e})=>D(null,null,...e),q="bespoke-marp-presenter-",_={container:`${q}container`,next:`${q}next`,nextContainer:`${q}next-container`,noteContainer:`${q}note-container`,infoContainer:`${q}info-container`,infoPage:`${q}info-page`,infoPageText:`${q}info-page-text`,infoPagePrev:`${q}info-page-prev`,infoPageNext:`${q}info-page-next`,infoTime:`${q}info-time`,infoTimer:`${q}info-timer`},U=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=_.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",D(M,null,D("div",{class:_.nextContainer},D("iframe",{class:_.next,src:"?view=next"})),D("div",{class:_.noteContainer}),D("div",{class:_.infoContainer},D("div",{class:_.infoPage},D("button",{class:_.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),D("span",{class:_.infoPageText}),D("button",{class:_.infoPageNext,tabindex:"-1",title:"Next"},"Next")),D("time",{class:_.infoTime,title:"Current time"}),D("div",{class:_.infoTimer})))),t})(e.parent)),(e=>{r(_.nextContainer).addEventListener("click",(()=>e.next()));const t=r(_.next),n=(o=t,(e,t)=>{var n;return null===(n=o.contentWindow)||void 0===n?void 0:n.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin)});var o;t.addEventListener("load",(()=>{r(_.nextContainer).classList.add("active"),n(e.slide(),e.fragmentIndex),e.on("fragment",(({index:e,fragmentIndex:t})=>n(e,t)))}));const a=document.querySelectorAll(".bespoke-marp-note");a.forEach((e=>{e.addEventListener("keydown",(e=>e.stopPropagation())),r(_.noteContainer).appendChild(e)})),e.on("activate",(()=>a.forEach((t=>t.classList.toggle("active",t.dataset.index==e.slide()))))),e.on("activate",(({index:t})=>{r(_.infoPageText).textContent=`${t+1} / ${e.slides.length}`}));const i=r(_.infoPagePrev),s=r(_.infoPageNext);i.addEventListener("click",(t=>{i.blur(),e.prev({fragment:!t.shiftKey})})),s.addEventListener("click",(t=>{s.blur(),e.next({fragment:!t.shiftKey})})),e.on("fragment",(({index:t,fragments:n,fragmentIndex:r})=>{i.disabled=0===t&&0===r,s.disabled=t===e.slides.length-1&&r===n.length-1}));const l=()=>r(_.infoTime).textContent=(new Date).toLocaleTimeString();l(),setInterval(l,250)})(e)},V=e=>{if(!(e=>e.syncKey&&"string"==typeof e.syncKey)(e))throw new Error("The current instance of Bespoke.js is invalid for Marp bespoke presenter plugin.");Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:X},presenterUrl:{enumerable:!0,get:F}}),d&&document.addEventListener("keydown",(t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())}))};function X(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,q+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function F(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),i(e)}const B=e=>{const t=s();return t===r&&e.appendChild(document.createElement("span")),{"":V,[n]:U,[r]:I}[t]},R=e=>{e.on("activate",(t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach((n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"}))}))},j=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},H=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{((t,n)=>{const{min:r,max:o}=Math,{fragments:a,slides:i}=e,s=o(0,r(t,i.length-1)),l=o(0,r(n||0,a[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((j(location.hash.slice(1))||1)-1,t.fragment?j(l("f")||""):null)};e.on("fragment",(({index:e,fragmentIndex:r})=>{n||c({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})})),setTimeout((()=>{o(),window.addEventListener("hashchange",(()=>r((()=>{o({fragment:!1}),c({f:void 0})})))),window.addEventListener("popstate",(()=>{n||r((()=>o()))})),n=!1}),0)}},Y=(e={})=>{var n;const r=e.key||(null===(n=window.history.state)||void 0===n?void 0:n.marpBespokeSyncKey)||Math.random().toString(36).slice(2),o=`bespoke-marp-sync-${r}`;var a;a={marpBespokeSyncKey:r},c({},{setter:(e,...n)=>t({...e,...a},...n)});const i=()=>{const e=f(o);return e?JSON.parse(e):Object.create(null)},s=e=>{const t=i(),n={...t,...e(t)};return u(o,JSON.stringify(n)),n},l=()=>{window.removeEventListener("pageshow",l),s((e=>({reference:(e.reference||0)+1})))};return e=>{l(),Object.defineProperty(e,"syncKey",{value:r,enumerable:!0});let t=!0;setTimeout((()=>{e.on("fragment",(e=>{t&&s((()=>({index:e.index,fragmentIndex:e.fragmentIndex})))}))}),0),window.addEventListener("storage",(n=>{if(n.key===o&&n.oldValue&&n.newValue){const r=JSON.parse(n.oldValue),o=JSON.parse(n.newValue);if(r.index!==o.index||r.fragmentIndex!==o.fragmentIndex)try{t=!1,e.slide(o.index,{fragment:o.fragmentIndex})}finally{t=!0}}}));const n=()=>{const{reference:e}=i();void 0===e||e<=1?m(o):s((()=>({reference:e-1})))};window.addEventListener("pagehide",(e=>{e.persisted&&window.addEventListener("pageshow",l),n()})),e.on("destroy",n)}},{PI:J,abs:W,sqrt:z,atan2:G}=Math,Q={passive:!0},Z=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,a=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",(({touches:e})=>{r=1===e.length?a(e[0]):void 0}),Q),o.addEventListener("touchmove",(e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=a(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=z(W(n)**2+W(o)**2),r.radian=G(n,o)}else r=void 0})),o.addEventListener("touchend",(o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+J)%(2*J)-J;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}}),Q)},ee="_tA",te=e=>{const t=document.documentTransition;if(!t)return;let n;e._tP=!1;const r=(n,{back:r,cond:o})=>a=>{const i=e.slides[e.slide()].querySelector("section[data-transition]");if(!i)return!0;const s=document.querySelector(".bespoke-marp-osc"),l=s?[s]:void 0;if(e._tP){if(a._tA){e._tP=!1;try{t.start({sharedElements:l}).catch((()=>{}))}catch(e){}return!0}}else{if(!o(a))return!0;e._tP=t.prepare({rootTransition:a.back||r?i.dataset.transitionBack:i.dataset.transition,sharedElements:l}).then((()=>n(a))).catch((()=>n(a)))}return!1};e.on("prev",r((t=>e.prev({...t,[ee]:!0})),{back:!0,cond:e=>{var t;return e.index>0&&!((null===(t=e.fragment)||void 0===t||t)&&n.fragmentIndex>0)}})),e.on("next",r((t=>e.next({...t,[ee]:!0})),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout((()=>{e.on("slide",r((t=>e.slide(t.index,{...t,[ee]:!0})),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))}),0),e.on("fragment",(e=>{n=e}))};let ne;const re=()=>(void 0===ne&&(ne="wakeLock"in navigator&&navigator.wakeLock),ne),oe=async()=>{const e=re();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},ae=async()=>{if(!re())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&oe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await oe(),e};((t=document.getElementById("p"))=>{(()=>{const t=l("view");e.dataset.bespokeView=t===r||t===n?t:""})();const a=(e=>{const t=l(e);return c({[e]:void 0}),t})("sync")||void 0;var i,d,f,u,m,g,h,y,x,b,E,I;i=t,d=((...e)=>{const t=o.findIndex((e=>s()===e));return e.map((([e,n])=>e[t]&&n)).filter((e=>e))})([[1,1,0],Y({key:a})],[[1,1,1],B(t)],[[1,1,0],L],[[1,1,1],p],[[1,0,0],k()],[[1,1,1],$],[[1,1,1],H({history:!1})],[[1,1,0],P()],[[1,1,0],w],[[1,0,0],R],[[1,1,0],Z()],[[1,0,0],S()],[[1,0,0],te],[[1,1,1],v],[[1,1,0],ae]),u=1===(i.parent||i).nodeType?i.parent||i:document.querySelector(i.parent||i),m=[].filter.call("string"==typeof i.slides?u.querySelectorAll(i.slides):i.slides||u.children,(function(e){return"SCRIPT"!==e.nodeName})),g={},h=function(e,t){return(t=t||{}).index=m.indexOf(e),t.slide=e,t},b=function(e,t){m[e]&&(f&&x("deactivate",h(f,t)),f=m[e],x("activate",h(f,t)))},E=function(e,t){var n=m.indexOf(f)+e;x(e>0?"next":"prev",h(f,t))&&b(n,t)},I={off:y=function(e,t){g[e]=(g[e]||[]).filter((function(e){return e!==t}))},on:function(e,t){return(g[e]||(g[e]=[])).push(t),y.bind(null,e,t)},fire:x=function(e,t){return(g[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},slide:function(e,t){if(!arguments.length)return m.indexOf(f);x("slide",h(m[e],t))&&b(e,t)},next:E.bind(null,1),prev:E.bind(null,-1),parent:u,slides:m,destroy:function(e){x("destroy",h(f,e)),g={}}},(d||[]).forEach((function(e){e(I)})),f||b(0)})()}();</script></body></html>
