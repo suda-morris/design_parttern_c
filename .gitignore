@@ -56,3 +56,7 @@ dkms.conf
 
 .gitignore
 build/
+
+dist/
+node_modules/
+package-lock.json
